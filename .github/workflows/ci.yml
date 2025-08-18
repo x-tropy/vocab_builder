@@ -35,10 +35,10 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Generate binstub for importmap
-        run: bundle binstubs importmap-rails
-      - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
+      - name: Scan JS dependencies
+        run: |
+          chmod +x bin/importmap
+          bin/importmap audit
 
   lint:
     runs-on: ubuntu-latest
